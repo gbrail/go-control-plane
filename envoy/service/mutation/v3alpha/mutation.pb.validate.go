@@ -44,83 +44,66 @@ func (m *MutationRequest) Validate() error {
 		return nil
 	}
 
-	switch m.R.(type) {
+	// no validation rules for ResponseRequired
 
-	case *MutationRequest_ResponseRequired:
-		// no validation rules for ResponseRequired
-
-	case *MutationRequest_Request:
-
-		if v, ok := interface{}(m.GetRequest()).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return MutationRequestValidationError{
-					field:  "Request",
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
+	if v, ok := interface{}(m.GetRequest()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return MutationRequestValidationError{
+				field:  "Request",
+				reason: "embedded message failed validation",
+				cause:  err,
 			}
 		}
+	}
 
-	case *MutationRequest_Response:
-
-		if v, ok := interface{}(m.GetResponse()).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return MutationRequestValidationError{
-					field:  "Response",
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
+	if v, ok := interface{}(m.GetResponse()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return MutationRequestValidationError{
+				field:  "Response",
+				reason: "embedded message failed validation",
+				cause:  err,
 			}
 		}
+	}
 
-	case *MutationRequest_RequestBody:
-
-		if v, ok := interface{}(m.GetRequestBody()).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return MutationRequestValidationError{
-					field:  "RequestBody",
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
+	if v, ok := interface{}(m.GetRequestBody()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return MutationRequestValidationError{
+				field:  "RequestBody",
+				reason: "embedded message failed validation",
+				cause:  err,
 			}
 		}
+	}
 
-	case *MutationRequest_ResponseBody:
-
-		if v, ok := interface{}(m.GetResponseBody()).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return MutationRequestValidationError{
-					field:  "ResponseBody",
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
+	if v, ok := interface{}(m.GetResponseBody()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return MutationRequestValidationError{
+				field:  "ResponseBody",
+				reason: "embedded message failed validation",
+				cause:  err,
 			}
 		}
+	}
 
-	case *MutationRequest_RequestTrailers:
-
-		if v, ok := interface{}(m.GetRequestTrailers()).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return MutationRequestValidationError{
-					field:  "RequestTrailers",
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
+	if v, ok := interface{}(m.GetRequestTrailers()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return MutationRequestValidationError{
+				field:  "RequestTrailers",
+				reason: "embedded message failed validation",
+				cause:  err,
 			}
 		}
+	}
 
-	case *MutationRequest_ResponseTrailers:
-
-		if v, ok := interface{}(m.GetResponseTrailers()).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return MutationRequestValidationError{
-					field:  "ResponseTrailers",
-					reason: "embedded message failed validation",
-					cause:  err,
-				}
+	if v, ok := interface{}(m.GetResponseTrailers()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return MutationRequestValidationError{
+				field:  "ResponseTrailers",
+				reason: "embedded message failed validation",
+				cause:  err,
 			}
 		}
-
 	}
 
 	return nil
@@ -180,19 +163,618 @@ var _ interface {
 	ErrorName() string
 } = MutationRequestValidationError{}
 
+// Validate checks the field values on StopCommand with the rules defined in
+// the proto definition for this message. If any rules are violated, an error
+// is returned.
+func (m *StopCommand) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	return nil
+}
+
+// StopCommandValidationError is the validation error returned by
+// StopCommand.Validate if the designated constraints aren't met.
+type StopCommandValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e StopCommandValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e StopCommandValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e StopCommandValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e StopCommandValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e StopCommandValidationError) ErrorName() string { return "StopCommandValidationError" }
+
+// Error satisfies the builtin error interface
+func (e StopCommandValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sStopCommand.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = StopCommandValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = StopCommandValidationError{}
+
+// Validate checks the field values on ContinueRequestCommand with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *ContinueRequestCommand) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	return nil
+}
+
+// ContinueRequestCommandValidationError is the validation error returned by
+// ContinueRequestCommand.Validate if the designated constraints aren't met.
+type ContinueRequestCommandValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ContinueRequestCommandValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ContinueRequestCommandValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ContinueRequestCommandValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ContinueRequestCommandValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ContinueRequestCommandValidationError) ErrorName() string {
+	return "ContinueRequestCommandValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ContinueRequestCommandValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sContinueRequestCommand.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ContinueRequestCommandValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ContinueRequestCommandValidationError{}
+
+// Validate checks the field values on ContinueResponseCommand with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *ContinueResponseCommand) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	return nil
+}
+
+// ContinueResponseCommandValidationError is the validation error returned by
+// ContinueResponseCommand.Validate if the designated constraints aren't met.
+type ContinueResponseCommandValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ContinueResponseCommandValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ContinueResponseCommandValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ContinueResponseCommandValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ContinueResponseCommandValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ContinueResponseCommandValidationError) ErrorName() string {
+	return "ContinueResponseCommandValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ContinueResponseCommandValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sContinueResponseCommand.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ContinueResponseCommandValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ContinueResponseCommandValidationError{}
+
+// Validate checks the field values on SendRequestBodyChunkCommand with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *SendRequestBodyChunkCommand) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	return nil
+}
+
+// SendRequestBodyChunkCommandValidationError is the validation error returned
+// by SendRequestBodyChunkCommand.Validate if the designated constraints
+// aren't met.
+type SendRequestBodyChunkCommandValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SendRequestBodyChunkCommandValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SendRequestBodyChunkCommandValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SendRequestBodyChunkCommandValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SendRequestBodyChunkCommandValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SendRequestBodyChunkCommandValidationError) ErrorName() string {
+	return "SendRequestBodyChunkCommandValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SendRequestBodyChunkCommandValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSendRequestBodyChunkCommand.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SendRequestBodyChunkCommandValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SendRequestBodyChunkCommandValidationError{}
+
+// Validate checks the field values on SendResponseBodyChunkCommand with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *SendResponseBodyChunkCommand) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	return nil
+}
+
+// SendResponseBodyChunkCommandValidationError is the validation error returned
+// by SendResponseBodyChunkCommand.Validate if the designated constraints
+// aren't met.
+type SendResponseBodyChunkCommandValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SendResponseBodyChunkCommandValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SendResponseBodyChunkCommandValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SendResponseBodyChunkCommandValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SendResponseBodyChunkCommandValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SendResponseBodyChunkCommandValidationError) ErrorName() string {
+	return "SendResponseBodyChunkCommandValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SendResponseBodyChunkCommandValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSendResponseBodyChunkCommand.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SendResponseBodyChunkCommandValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SendResponseBodyChunkCommandValidationError{}
+
+// Validate checks the field values on SendBufferedRequestBodyCommand with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *SendBufferedRequestBodyCommand) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	return nil
+}
+
+// SendBufferedRequestBodyCommandValidationError is the validation error
+// returned by SendBufferedRequestBodyCommand.Validate if the designated
+// constraints aren't met.
+type SendBufferedRequestBodyCommandValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SendBufferedRequestBodyCommandValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SendBufferedRequestBodyCommandValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SendBufferedRequestBodyCommandValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SendBufferedRequestBodyCommandValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SendBufferedRequestBodyCommandValidationError) ErrorName() string {
+	return "SendBufferedRequestBodyCommandValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SendBufferedRequestBodyCommandValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSendBufferedRequestBodyCommand.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SendBufferedRequestBodyCommandValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SendBufferedRequestBodyCommandValidationError{}
+
+// Validate checks the field values on SendBufferedResponseBodyCommand with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *SendBufferedResponseBodyCommand) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	return nil
+}
+
+// SendBufferedResponseBodyCommandValidationError is the validation error
+// returned by SendBufferedResponseBodyCommand.Validate if the designated
+// constraints aren't met.
+type SendBufferedResponseBodyCommandValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SendBufferedResponseBodyCommandValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SendBufferedResponseBodyCommandValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SendBufferedResponseBodyCommandValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SendBufferedResponseBodyCommandValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SendBufferedResponseBodyCommandValidationError) ErrorName() string {
+	return "SendBufferedResponseBodyCommandValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SendBufferedResponseBodyCommandValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSendBufferedResponseBodyCommand.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SendBufferedResponseBodyCommandValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SendBufferedResponseBodyCommandValidationError{}
+
+// Validate checks the field values on SendRequestTrailersCommand with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *SendRequestTrailersCommand) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	return nil
+}
+
+// SendRequestTrailersCommandValidationError is the validation error returned
+// by SendRequestTrailersCommand.Validate if the designated constraints aren't met.
+type SendRequestTrailersCommandValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SendRequestTrailersCommandValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SendRequestTrailersCommandValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SendRequestTrailersCommandValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SendRequestTrailersCommandValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SendRequestTrailersCommandValidationError) ErrorName() string {
+	return "SendRequestTrailersCommandValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SendRequestTrailersCommandValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSendRequestTrailersCommand.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SendRequestTrailersCommandValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SendRequestTrailersCommandValidationError{}
+
+// Validate checks the field values on SendResponseTrailersCommand with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, an error is returned.
+func (m *SendResponseTrailersCommand) Validate() error {
+	if m == nil {
+		return nil
+	}
+
+	return nil
+}
+
+// SendResponseTrailersCommandValidationError is the validation error returned
+// by SendResponseTrailersCommand.Validate if the designated constraints
+// aren't met.
+type SendResponseTrailersCommandValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SendResponseTrailersCommandValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SendResponseTrailersCommandValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SendResponseTrailersCommandValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SendResponseTrailersCommandValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SendResponseTrailersCommandValidationError) ErrorName() string {
+	return "SendResponseTrailersCommandValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SendResponseTrailersCommandValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSendResponseTrailersCommand.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SendResponseTrailersCommandValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SendResponseTrailersCommandValidationError{}
+
 // Validate checks the field values on MutationResponse with the rules defined
 // in the proto definition for this message. If any rules are violated, an
 // error is returned.
 func (m *MutationResponse) Validate() error {
 	if m == nil {
 		return nil
-	}
-
-	if _, ok := MutationResponse_Command_name[int32(m.GetCommand())]; !ok {
-		return MutationResponseValidationError{
-			field:  "Command",
-			reason: "value must be one of the defined enum values",
-		}
 	}
 
 	if v, ok := interface{}(m.GetCompleteResponse()).(interface{ Validate() error }); ok {
@@ -248,6 +830,124 @@ func (m *MutationResponse) Validate() error {
 				cause:  err,
 			}
 		}
+	}
+
+	switch m.Command.(type) {
+
+	case *MutationResponse_Stop:
+
+		if v, ok := interface{}(m.GetStop()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return MutationResponseValidationError{
+					field:  "Stop",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *MutationResponse_ContinueRequest:
+
+		if v, ok := interface{}(m.GetContinueRequest()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return MutationResponseValidationError{
+					field:  "ContinueRequest",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *MutationResponse_ContinueResponse:
+
+		if v, ok := interface{}(m.GetContinueResponse()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return MutationResponseValidationError{
+					field:  "ContinueResponse",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *MutationResponse_SendRequestBodyChunk:
+
+		if v, ok := interface{}(m.GetSendRequestBodyChunk()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return MutationResponseValidationError{
+					field:  "SendRequestBodyChunk",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *MutationResponse_SendResponseBodyChunk:
+
+		if v, ok := interface{}(m.GetSendResponseBodyChunk()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return MutationResponseValidationError{
+					field:  "SendResponseBodyChunk",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *MutationResponse_SendBufferedRequestBody:
+
+		if v, ok := interface{}(m.GetSendBufferedRequestBody()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return MutationResponseValidationError{
+					field:  "SendBufferedRequestBody",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *MutationResponse_SendBufferedResponseBody:
+
+		if v, ok := interface{}(m.GetSendBufferedResponseBody()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return MutationResponseValidationError{
+					field:  "SendBufferedResponseBody",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *MutationResponse_SendRequestTrailers:
+
+		if v, ok := interface{}(m.GetSendRequestTrailers()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return MutationResponseValidationError{
+					field:  "SendRequestTrailers",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *MutationResponse_SendResponseTrailers:
+
+		if v, ok := interface{}(m.GetSendResponseTrailers()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return MutationResponseValidationError{
+					field:  "SendResponseTrailers",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	default:
+		return MutationResponseValidationError{
+			field:  "Command",
+			reason: "value is required",
+		}
+
 	}
 
 	return nil
